@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Update Player Stats</title>
+    
+    <h:outputStylesheet library="css" name="style.css"  />
+    <h:outputStylesheet library="css" name="add-student-style.css"  />
+    
+</h:head>
+
+<h:body>
+
+    <div id="wrapper">
+        <div id="header">
+            <h2>Fightin Beavs Hockey Stats</h2>
+        </div>
+    </div>
+    
+    <div id="container">
+        <h3>Update Player Stats</h3>
+
+        <h:messages globalOnly="true" />
+
+        <h:form id="form" style="margin-top: 10px;" >
+            <h:panelGrid columns="3">
+            
+            	<h:outputLabel>Player Number:</h:outputLabel> <h:inputText value="#{player.number}" id="number" 
+                							required="true"/> <h:message for="number" requiredMessage="The player's number is mandatory."/>
+            
+                <h:outputLabel>First name:</h:outputLabel> <h:inputText value="#{player.firstName}" id="firstName" 
+                							required="true"/> <h:message for="firstName" requiredMessage="The player's First name is mandatory."/>
+    
+                <h:outputLabel>Last name:</h:outputLabel> <h:inputText value="#{player.lastName}" id="lastName"    
+                          					required="true"/> <h:message for="lastName" requiredMessage="The player's Last name is mandatory."/>
+                          					    
+                <h:outputLabel>Games Played:</h:outputLabel> <h:inputText value="#{player.gamesPlayed}" id="gamesPlayed"    
+                          					required="true"/> <h:message for="gamesPlayed" requiredMessage="The player's gamesPlayed is mandatory."/>
+                
+				<h:outputLabel>Goals:</h:outputLabel> <h:inputText value="#{player.goals}" id="goals"    
+                          					required="true"/> <h:message for="goals" requiredMessage="The player's goals are mandatory."/>    
+                             
+ 				<h:outputLabel>Assists:</h:outputLabel> <h:inputText value="#{player.assists}" id="assists"    
+                          					required="true"/> <h:message for="assists" requiredMessage="The player's assists are mandatory."/>              					
+                             
+ 				<h:outputLabel>Points:</h:outputLabel> <h:inputText value="#{player.points}" id="points"    
+                          					required="true"/> <h:message for="points" requiredMessage="The player's points are mandatory."/>                            					              
+                
+ 				<h:outputLabel>PIM:</h:outputLabel> <h:inputText value="#{player.pim}" id="pim"    
+                          					required="true"/> <h:message for="pim" requiredMessage="The player's PIM are mandatory."/>      
+                                        
+                <h:inputHidden value="#{player.id}"/>
+                
+                <h:commandButton value="Save" styleClass="save" action="#{playerController.updatePlayer(player)}"/>
+            
+            </h:panelGrid>
+        </h:form>
+
+        <div style="clear: both;"></div>
+
+        <p><h:outputLink value="list_players.xhtml">Back to List</h:outputLink></p>
+
+    </div>    
+</h:body>
+</html>
