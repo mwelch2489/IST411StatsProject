@@ -45,6 +45,126 @@ public class PlayerController {
 			addErrorMessage(exc);
 		}
 	}
+	public void sortByNumber() {
+		logger.info("Loading players by number");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByNumber();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by number");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+	}
+	public void sortByFirstName() {
+		logger.info("Loading players by first name");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayers();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by first name");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+	}
+	public void sortByLastName() {
+		logger.info("Loading players by last name");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayers();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by last name");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+	}
+	public void sortByGamesPlayed() {
+		logger.info("Loading players by games played");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByGamesPlayed();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by games played");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+	}
+	public void sortByGoals() {
+		logger.info("Loading players by goals");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayers();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by goals");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+	}
+	public void sortByAssists() {
+		logger.info("Loading players by Points");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayers();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by Points");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+	}
+	public void sortByPoints() {
+		logger.info("Loading players by Points");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayers();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by Points");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+	}
+	public void sortByPim() {
+		logger.info("Loading players by PIM");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayers();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by PIM");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+	}
 	public String loadPlayers(int playerId) {
 		logger.info("Loading players" + playerId);
 		

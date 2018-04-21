@@ -75,6 +75,88 @@ public class PlayerDbUtil {
 			close(myConn, mySt, myRs);
 		}
 	}
+	public List<Player> getPlayersByNumber() throws Exception{
+		List<Player> players = new ArrayList<>();
+		
+		Connection myConn = null;
+		Statement mySt = null;
+		ResultSet myRs = null;
+		
+		try {
+			myConn = getConnection();
+			
+			String sql = "select * from player order by player_number";
+			
+			mySt = myConn.createStatement();
+			
+			myRs = mySt.executeQuery(sql);
+			
+			//Process the resultSet
+			while(myRs.next()){
+				//retrieve data from result set
+				int id = myRs.getInt("id");
+				int number = myRs.getInt("player_number");
+				String firstName = myRs.getString("first_name");
+				String lastName = myRs.getString("last_name");
+				int gamesPlayed = myRs.getInt("games_played");
+				int goals = myRs.getInt("goals");
+				int assists = myRs.getInt("assists");
+				int points = myRs.getInt("points");
+				int pim = myRs.getInt("pim");
+				
+				//Create a new student object
+				Player tempPlayer = new Player(id, number, firstName, lastName, gamesPlayed, goals, assists, points, pim);
+				
+				//Add it to list of students
+				players.add(tempPlayer);
+			}
+			return players;
+		}
+		finally {
+			close(myConn, mySt, myRs);
+		}
+	}
+	public List<Player> getPlayersByGamesPlayed() throws Exception{
+		List<Player> players = new ArrayList<>();
+		
+		Connection myConn = null;
+		Statement mySt = null;
+		ResultSet myRs = null;
+		
+		try {
+			myConn = getConnection();
+			
+			String sql = "select * from player order by games_played";
+			
+			mySt = myConn.createStatement();
+			
+			myRs = mySt.executeQuery(sql);
+			
+			//Process the resultSet
+			while(myRs.next()){
+				//retrieve data from result set
+				int id = myRs.getInt("id");
+				int number = myRs.getInt("player_number");
+				String firstName = myRs.getString("first_name");
+				String lastName = myRs.getString("last_name");
+				int gamesPlayed = myRs.getInt("games_played");
+				int goals = myRs.getInt("goals");
+				int assists = myRs.getInt("assists");
+				int points = myRs.getInt("points");
+				int pim = myRs.getInt("pim");
+				
+				//Create a new student object
+				Player tempPlayer = new Player(id, number, firstName, lastName, gamesPlayed, goals, assists, points, pim);
+				
+				//Add it to list of students
+				players.add(tempPlayer);
+			}
+			return players;
+		}
+		finally {
+			close(myConn, mySt, myRs);
+		}
+	}
 	public Player getPlayer(int playerId) throws Exception {
 		
 		Connection myConn = null;
