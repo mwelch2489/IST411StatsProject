@@ -157,6 +157,24 @@ public class PlayerController {
 		}
 		return "sort_by_first_name?faces-redirect=true";
 	}
+	//--------------------------------------------------------NEW METHOD-----------------------------------------------
+	public String loadPlayersByFirstNameZtoA() {
+		logger.info("Loading players");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByFirstNameZtoA();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by First Name (Z to A)");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+		return "sort_by_first_nameZtoA?faces-redirect=true";
+	}
+	
 	public String loadPlayersByLastName() {
 		logger.info("Loading players");
 		
@@ -173,6 +191,25 @@ public class PlayerController {
 		}
 		return "sort_by_last_name?faces-redirect=true";
 	}
+	
+	//--------------------------------------------------------NEW METHOD---------------------------------------------
+	public String loadPlayersByLastNameZtoA() {
+		logger.info("Loading players");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByLastNameZtoA();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by Last Name");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+		return "sort_by_last_nameZtoA?faces-redirect=true";
+	}
+	
 	private void addErrorMessage(Exception exc) {
 		FacesMessage message = new FacesMessage("Error: " + exc.getMessage());
 		FacesContext.getCurrentInstance().addMessage(null, message);
