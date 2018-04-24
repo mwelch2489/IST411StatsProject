@@ -45,8 +45,8 @@ public class PlayerController {
 			addErrorMessage(exc);
 		}
 	}
-	public void sortByNumber() {
-		logger.info("Loading players by number");
+	public String loadPlayersByNumber() {
+		logger.info("Loading players");
 		
 		players.clear();
 		try {
@@ -55,43 +55,14 @@ public class PlayerController {
 		}
 		catch(Exception exc){
 			//Send this to server log
-			logger.log(Level.SEVERE, "Error Loading Players by number");
+			logger.log(Level.SEVERE, "Error Loading Players by Number");
 			//add error message for JSF
 			addErrorMessage(exc);
 		}
+		return "sort_by_number?faces-redirect=true" ;
 	}
-	public void sortByFirstName() {
-		logger.info("Loading players by first name");
-		
-		players.clear();
-		try {
-			//get all students from database
-			players = playerDbUtil.getPlayers();
-		}
-		catch(Exception exc){
-			//Send this to server log
-			logger.log(Level.SEVERE, "Error Loading Players by first name");
-			//add error message for JSF
-			addErrorMessage(exc);
-		}
-	}
-	public void sortByLastName() {
-		logger.info("Loading players by last name");
-		
-		players.clear();
-		try {
-			//get all students from database
-			players = playerDbUtil.getPlayers();
-		}
-		catch(Exception exc){
-			//Send this to server log
-			logger.log(Level.SEVERE, "Error Loading Players by last name");
-			//add error message for JSF
-			addErrorMessage(exc);
-		}
-	}
-	public void sortByGamesPlayed() {
-		logger.info("Loading players by games played");
+	public String loadPlayersByGamesPlayed() {
+		logger.info("Loading players");
 		
 		players.clear();
 		try {
@@ -104,29 +75,47 @@ public class PlayerController {
 			//add error message for JSF
 			addErrorMessage(exc);
 		}
+		return "sort_by_games_played?faces-redirect=true";
 	}
-	public void sortByGoals() {
-		logger.info("Loading players by goals");
+	public String loadPlayersByGoals() {
+		logger.info("Loading players");
 		
 		players.clear();
 		try {
 			//get all students from database
-			players = playerDbUtil.getPlayers();
+			players = playerDbUtil.getPlayersByGoals();
 		}
 		catch(Exception exc){
 			//Send this to server log
-			logger.log(Level.SEVERE, "Error Loading Players by goals");
+			logger.log(Level.SEVERE, "Error Loading Players by Goals");
 			//add error message for JSF
 			addErrorMessage(exc);
 		}
+		return "sort_by_goals?faces-redirect=true";
 	}
-	public void sortByAssists() {
-		logger.info("Loading players by Points");
+	public String loadPlayersByAssists() {
+		logger.info("Loading players");
 		
 		players.clear();
 		try {
 			//get all students from database
-			players = playerDbUtil.getPlayers();
+			players = playerDbUtil.getPlayersByAssists();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by Assists");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+		return "sort_by_assists?faces-redirect=true";
+	}
+	public String loadPlayersByPoints() {
+		logger.info("Loading players");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByPoints();
 		}
 		catch(Exception exc){
 			//Send this to server log
@@ -134,29 +123,15 @@ public class PlayerController {
 			//add error message for JSF
 			addErrorMessage(exc);
 		}
+		return "sort_by_points?faces-redirect=true";
 	}
-	public void sortByPoints() {
-		logger.info("Loading players by Points");
+	public String loadPlayersByPim() {
+		logger.info("Loading players");
 		
 		players.clear();
 		try {
 			//get all students from database
-			players = playerDbUtil.getPlayers();
-		}
-		catch(Exception exc){
-			//Send this to server log
-			logger.log(Level.SEVERE, "Error Loading Players by Points");
-			//add error message for JSF
-			addErrorMessage(exc);
-		}
-	}
-	public void sortByPim() {
-		logger.info("Loading players by PIM");
-		
-		players.clear();
-		try {
-			//get all students from database
-			players = playerDbUtil.getPlayers();
+			players = playerDbUtil.getPlayersByPim();
 		}
 		catch(Exception exc){
 			//Send this to server log
@@ -164,6 +139,43 @@ public class PlayerController {
 			//add error message for JSF
 			addErrorMessage(exc);
 		}
+		return "sort_by_pim?faces-redirect=true";
+	}
+	public String loadPlayersByFirstName() {
+		logger.info("Loading players");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByFirstName();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by First Name");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+		return "sort_by_first_name?faces-redirect=true";
+	}
+	public String loadPlayersByLastName() {
+		logger.info("Loading players");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByLastName();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by Last Name");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+		return "sort_by_last_name?faces-redirect=true";
+	}
+	private void addErrorMessage(Exception exc) {
+		FacesMessage message = new FacesMessage("Error: " + exc.getMessage());
+		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 	public String loadPlayers(int playerId) {
 		logger.info("Loading players" + playerId);
@@ -186,10 +198,6 @@ public class PlayerController {
 			return null;
 		}
 		return "update_player_form.xhtml";
-	}
-	private void addErrorMessage(Exception exc) {
-		FacesMessage message = new FacesMessage("Error: " + exc.getMessage());
-		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 	public String addPlayer(Player thePlayer) {
 		logger.info("Adding Player" + thePlayer);
@@ -223,18 +231,20 @@ public class PlayerController {
 		return "list_players?faces-redirect=true";
 	}
 	public String deletePlayer(int playerId) {
-		logger.info("Deleting Player" + playerId);
+		logger.info("Deleting Student" + playerId);
 		try {
 			//Update student to DB
 			playerDbUtil.deletePlayer(playerId);
 		}
 		catch(Exception exc){
 			//Send this to server log
-			logger.log(Level.SEVERE, "Error Deleting Player" + playerId, exc);
+			logger.log(Level.SEVERE, "Error Deleting player" + playerId, exc);
 			//add error message for JSF
 			addErrorMessage(exc);
 			return null;
 		}
 		return "list_players";
 	}
+
+
 }
