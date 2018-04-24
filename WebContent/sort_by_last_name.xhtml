@@ -49,16 +49,24 @@
 					</h:column>
 					<h:column>
 					    <f:facet name="header">
+					    	<div style="color:black">First Name:</div>
 					    	<h:commandLink action="#{playerController.loadPlayersByFirstName}">
-					    	   First Name
+					    	   A to Z
+					    	</h:commandLink>
+					    	<h:commandLink action="#{playerController.loadPlayersByFirstNameZtoA}">
+					    	   Z to A
 					    	</h:commandLink>
 					    </f:facet>
 					    #{tempPlayer.firstName}
 					</h:column>
 					<h:column>
 					    <f:facet name="header">
+					    	<div style="color:black">Last Name:</div>
 					    	<h:commandLink action="#{playerController.loadPlayersByLastName}">
-					    	   Last Name
+					    	   A to Z
+					    	</h:commandLink>
+					    	<h:commandLink action="#{playerController.loadPlayersByLastNameZtoA}">
+					    	   Z to A
 					    	</h:commandLink>
 					    </f:facet>
 					    #{tempPlayer.lastName}
