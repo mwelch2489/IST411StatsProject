@@ -41,76 +41,117 @@
 				
 					<h:column>
 					    <f:facet name="header">
+					    <div style="color:black">Number</div>
 					    	<h:commandLink action="#{playerController.loadPlayersByNumber}">
-					    	   Number
+					    	 High
+					    	</h:commandLink>
+					    	<br/>
+					    	<h:commandLink action="#{playerController.loadPlayers}">
+					    	 Low
 					    	</h:commandLink>
 					    </f:facet>
 					    #{tempPlayer.number}
 					</h:column>
 					<h:column>
 					    <f:facet name="header">
+					    	<div style="color:black">First Name:</div>
 					    	<h:commandLink action="#{playerController.loadPlayersByFirstName}">
-					    	   First Name
+					    	   A to Z
+					    	</h:commandLink>
+					    	<br/>
+					    	<h:commandLink action="#{playerController.loadPlayersByFirstNameZtoA}">
+					    	   Z to A
 					    	</h:commandLink>
 					    </f:facet>
 					    #{tempPlayer.firstName}
 					</h:column>
 					<h:column>
 					    <f:facet name="header">
+					    	<div style="color:black">Last Name:</div>
 					    	<h:commandLink action="#{playerController.loadPlayersByLastName}">
-					    	   Last Name
+					    	   A to Z
+					    	</h:commandLink>
+					    	<br/>
+					    	<h:commandLink action="#{playerController.loadPlayersByLastNameZtoA}">
+					    	   Z to A
 					    	</h:commandLink>
 					    </f:facet>
 					    #{tempPlayer.lastName}
-					</h:column>		
+					</h:column>	
 					<h:column>
 					    <f:facet name="header">
+					    <div style="color:black">Games Played</div>
 					    	<h:commandLink action="#{playerController.loadPlayersByGamesPlayed}">
-					    	   Games Played
+					    	 High
+					    	</h:commandLink>
+					    	<br/>
+					    	<h:commandLink action="#{playerController.loadPlayersByGamesPlayedLowToHigh}">
+					    	 Low
 					    	</h:commandLink>
 					    </f:facet>
 					    #{tempPlayer.gamesPlayed}
-					</h:column>			
+					</h:column>		
 					<h:column>
 					    <f:facet name="header">
+					    <div style="color:black">Goals</div>
 					    	<h:commandLink action="#{playerController.loadPlayersByGoals}">
-					    	   Goals
+					    	 High
+					    	</h:commandLink>
+					    	<br/>
+					    	<h:commandLink action="#{playerController.loadPlayersByGoalsLowToHigh}">
+					    	 Low
 					    	</h:commandLink>
 					    </f:facet>
 					    #{tempPlayer.goals}
 					</h:column>	
 					<h:column>
 					    <f:facet name="header">
+					    <div style="color:black">Assists</div>
 					    	<h:commandLink action="#{playerController.loadPlayersByAssists}">
-					    	   Assists
+					    	 High
+					    	</h:commandLink>
+					    	<br/>
+					    	<h:commandLink action="#{playerController.loadPlayersByAssistsLowToHigh}">
+					    	 Low
 					    	</h:commandLink>
 					    </f:facet>
 					    #{tempPlayer.assists}
-					</h:column>						
+					</h:column>											
 					<h:column>
 					    <f:facet name="header">
+					    <div style="color:black">Points</div>
 					    	<h:commandLink action="#{playerController.loadPlayersByPoints}">
-					    	   Points
+					    	 High
+					    	</h:commandLink>
+					    	<br/>
+					    	<h:commandLink action="#{playerController.loadPlayersByPointsLowToHigh}">
+					    	 Low
 					    	</h:commandLink>
 					    </f:facet>
 					    #{tempPlayer.points}
-					</h:column>	
+					</h:column>							
 					<h:column>
 					    <f:facet name="header">
+					    <div style="color:black">PIM</div>
 					    	<h:commandLink action="#{playerController.loadPlayersByPim}">
-					    	   PIM
+					    	 High
+					    	</h:commandLink>
+					    	<br/>
+					    	<h:commandLink action="#{playerController.loadPlayersByPimLowToHigh}">
+					    	 Low
 					    	</h:commandLink>
 					    </f:facet>
 					    #{tempPlayer.pim}
-					</h:column>		
+					</h:column>	
 					<h:column>
 						<!-- The Column Header -->
 						<f:facet name="header"><p> Action </p></f:facet>
 						
 						<!-- The Value for Each Row -->
-						<h:commandLink value="Update Player Stats" action="#{playerController.loadPlayers(tempPlayer.id)}"/>
+						<h:commandLink value="Update Player Stats" styleClass="commandLink"  action="#{playerController.loadPlayers(tempPlayer.id)}"/>
 						|
 						<h:commandLink value="Delete Player" 
+						styleClass="commandLink" 
 						onclick="if (!confirm ('Are you sure you want to delete this player? The player and their stats will be removed permanently')) return false" 
 						action="#{playerController.deletePlayer(tempPlayer.id)}"/>
 						

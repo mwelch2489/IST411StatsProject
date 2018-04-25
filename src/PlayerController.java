@@ -30,7 +30,7 @@ public class PlayerController {
 		return players;
 	}
 	
-	public void loadPlayers() {
+	public String loadPlayers() {
 		logger.info("Loading players");
 		
 		players.clear();
@@ -44,6 +44,7 @@ public class PlayerController {
 			//add error message for JSF
 			addErrorMessage(exc);
 		}
+		return "list_players?faces-redirect=true";
 	}
 	public String loadPlayersByNumber() {
 		logger.info("Loading players");
@@ -77,6 +78,22 @@ public class PlayerController {
 		}
 		return "sort_by_games_played?faces-redirect=true";
 	}
+	public String loadPlayersByGamesPlayedLowToHigh() {
+		logger.info("Loading players");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByGamesPlayedLowToHigh();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by games played low to high");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+		return "sort_by_games_played_low_to_high?faces-redirect=true";
+	}
 	public String loadPlayersByGoals() {
 		logger.info("Loading players");
 		
@@ -92,6 +109,22 @@ public class PlayerController {
 			addErrorMessage(exc);
 		}
 		return "sort_by_goals?faces-redirect=true";
+	}
+	public String loadPlayersByGoalsLowToHigh() {
+		logger.info("Loading players");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByGoalsLowToHigh();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by Goals low to high");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+		return "sort_by_goals_low_to_high?faces-redirect=true";
 	}
 	public String loadPlayersByAssists() {
 		logger.info("Loading players");
@@ -109,6 +142,22 @@ public class PlayerController {
 		}
 		return "sort_by_assists?faces-redirect=true";
 	}
+	public String loadPlayersByAssistsLowToHigh() {
+		logger.info("Loading players");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByAssistsLowToHigh();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by Assists");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+		return "sort_by_assists_low_to_high?faces-redirect=true";
+	}
 	public String loadPlayersByPoints() {
 		logger.info("Loading players");
 		
@@ -124,6 +173,22 @@ public class PlayerController {
 			addErrorMessage(exc);
 		}
 		return "sort_by_points?faces-redirect=true";
+	}
+	public String loadPlayersByPointsLowToHigh() {
+		logger.info("Loading players");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByPointsLowToHigh();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by Points low to high");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+		return "sort_by_points_low_to_high?faces-redirect=true";
 	}
 	public String loadPlayersByPim() {
 		logger.info("Loading players");
@@ -141,6 +206,22 @@ public class PlayerController {
 		}
 		return "sort_by_pim?faces-redirect=true";
 	}
+	public String loadPlayersByPimLowToHigh() {
+		logger.info("Loading players");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByPimLowToHigh();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by PIM");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+		return "sort_by_pim_low_to_high?faces-redirect=true";
+	}
 	public String loadPlayersByFirstName() {
 		logger.info("Loading players");
 		
@@ -157,6 +238,22 @@ public class PlayerController {
 		}
 		return "sort_by_first_name?faces-redirect=true";
 	}
+	public String loadPlayersByFirstNameZtoA() {
+		logger.info("Loading players");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByFirstNameZtoA();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by First Name Z to A");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+		return "sort_by_first_name_z_to_a?faces-redirect=true";
+	}
 	public String loadPlayersByLastName() {
 		logger.info("Loading players");
 		
@@ -172,6 +269,22 @@ public class PlayerController {
 			addErrorMessage(exc);
 		}
 		return "sort_by_last_name?faces-redirect=true";
+	}
+	public String loadPlayersByLastNameZtoA() {
+		logger.info("Loading players");
+		
+		players.clear();
+		try {
+			//get all students from database
+			players = playerDbUtil.getPlayersByLastNameZtoA();
+		}
+		catch(Exception exc){
+			//Send this to server log
+			logger.log(Level.SEVERE, "Error Loading Players by Last Name Z to A");
+			//add error message for JSF
+			addErrorMessage(exc);
+		}
+		return "sort_by_last_name_z_to_a?faces-redirect=true";
 	}
 	private void addErrorMessage(Exception exc) {
 		FacesMessage message = new FacesMessage("Error: " + exc.getMessage());

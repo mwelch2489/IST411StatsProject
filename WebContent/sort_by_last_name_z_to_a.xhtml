@@ -7,7 +7,7 @@
 	xmlns:ui = "http://xmlns.jcp.org/jsf/facelets"> <!-- JSF UI component -->
 	
 	<f:metadata>
-		<f:event listener="#{playerController.loadPlayersByFirstName}" type="preRenderView" />
+		<f:event listener="#{playerController.loadPlayersByLastNameZtoA}" type="preRenderView" />
 	</f:metadata>
 	
 	<h:head>
@@ -37,7 +37,6 @@
 				styleClass="demo-table" 
 				headerClass="demo-table-header" 
 				rowClasses="demo-table-odd-row, demo-table-even-row">
-				
 				
 					<h:column>
 					    <f:facet name="header">
@@ -142,7 +141,7 @@
 					    	</h:commandLink>
 					    </f:facet>
 					    #{tempPlayer.pim}
-					</h:column>	
+					</h:column>		
 					<h:column>
 						<!-- The Column Header -->
 						<f:facet name="header"><p> Action </p></f:facet>

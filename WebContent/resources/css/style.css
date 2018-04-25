@@ -20,17 +20,27 @@ html,body{
  
 .demo-table-odd-row {
 	border-top:1px solid gray;
-	background:none repeat scroll 0 0 #FFFFFFF;
+	background:none repeat scroll 0 0 #f2f2f2;
 	text-align:center;
+	color: #000080;
+	text-decoration: none;
 }
  
 .demo-table-even-row {
 	border-top:1px solid gray;
-	background:none repeat scroll 0 0 #D0D0D0;
+	background:none repeat scroll 0 0 #000080;
 	text-align:center;
+	color: #FFFFFF;
+	text-decoration: none;
 }
 p{
-	color: blue;
+	color: black;
+}
+.commandLink {
+	text-decoration: none;
+}
+h:commandLink{
+	text-decoration: none;
 }
 
 #wrapper {width: 100%; margin-top: 0px; }
